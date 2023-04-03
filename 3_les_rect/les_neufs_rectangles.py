@@ -22,40 +22,30 @@ GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
 COLORS = (RED, GREEN, BLUE)
 color_index = 0
- 
 pygame.init()
 screen = pygame.display.set_mode((400, 400))
- 
 stop = False
-
 clickable_area = []
 rect_surf = []
-
 j = -1
 for i in range(9):
-    if i%3 == 0:
-            j += 1
+    if i % 3 == 0:
+        j += 1
     clickable_area.append(pygame.Rect((5 + 105 * (i%3), 5 + 105 * j), (100, 100)))
     rect_surf.append(pygame.Surface(clickable_area[i].size))
     rect_surf[i].fill(COLORS[color_index])
-
-    
-
- 
 while not stop:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            stop = True
-         
-        elif event.type == MOUSEBUTTONUP: # quand je relache le bouton
-            if event.button == 1: # 1= clique gauche
-                if clickable_area[0].collidepoint(event.pos):
-                    color_index = (color_index + 1) % 3
-                    rect_surf[0].fill(COLORS[color_index])
-     
-    screen.fill(0) # On efface tout l'écran
+            stop = True       
+        elif event.type == MOUSEBUTTONUP:
+            if event.button == 1:
+                for i in range(9):
+                    if clickable_area[i].collidepoint(event.pos):
+                        color_index = (color_index + 1) % 3
+                        rect_surf[i].fill(COLORS[color_index])
+    screen.fill(0)
     for i in range(9):
         screen.blit(rect_surf[i], clickable_area[i])
     pygame.display.flip()
- 
 pygame.quit()
