@@ -31,10 +31,16 @@ stop = False
 clickable_area = []
 rect_surf = []
 
+j = -1
 for i in range(9):
-    clickable_area.append(pygame.Rect((5 + 105 * i, 5), (100, 100)))
+    if i%3 == 0:
+            j += 1
+    clickable_area.append(pygame.Rect((5 + 105 * (i%3), 5 + 105 * j), (100, 100)))
     rect_surf.append(pygame.Surface(clickable_area[i].size))
     rect_surf[i].fill(COLORS[color_index])
+
+    
+
  
 while not stop:
     for event in pygame.event.get():
