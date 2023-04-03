@@ -32,7 +32,7 @@ clickable_area = []
 rect_surf = []
 
 for i in range(9):
-    clickable_area.append(pygame.Rect((5, 5), (100, 100)))
+    clickable_area.append(pygame.Rect((5 + 105 * i, 5), (100, 100)))
     rect_surf.append(pygame.Surface(clickable_area[i].size))
     rect_surf[i].fill(COLORS[color_index])
  
