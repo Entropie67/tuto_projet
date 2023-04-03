@@ -21,13 +21,21 @@ def gagne(grille):
     """ Prend une grille et renvoie le numéro du joueur gagnant,
     0 si personne ne gagne 
     """
-   
+    # En diag
+    if grille[0] == grille[4] and grille[0] == grille[8] and grille[0] != 0:
+        return grille[0]
+        print("coucou")
+    col = -1
     for i in range(0, 9, 3):
-        print(i)
-        joueur = grille[i]
-         # En ligne
+        col += 1
+        # En ligne
         if grille[i] == grille[i + 1] and grille[i] == grille[i+2] and grille[i] != 0:
-            return joueur
+            return grille[i]
+        # En colonne
+        if grille[col] == grille[col + 3] and grille[col] == grille[col+6] and grille[col] != 0:
+            return grille[col]
+    
+       
     return 0
 
 
@@ -69,7 +77,7 @@ while not stop:
                             joueur += 1
                             g = gagne(grille)
                             if g:
-                                print(f"le joueur {g+1} gagne")
+                                print(f"le joueur {g} gagne")
     screen.fill(0)
     for i in range(9):
         screen.blit(rect_surf[i], clickable_area[i])
