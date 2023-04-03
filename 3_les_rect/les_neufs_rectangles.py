@@ -48,8 +48,8 @@ while not stop:
                     rect_surf[0].fill(COLORS[color_index])
      
     screen.fill(0) # On efface tout l'écran
-
-    screen.blit(rect_surf[0], clickable_area[0])
+    for i in range(9):
+        screen.blit(rect_surf[i], clickable_area[i])
     pygame.display.flip()
  
 pygame.quit()
