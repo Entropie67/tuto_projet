@@ -33,9 +33,7 @@ def gagne(grille):
             return grille[i]
         # En colonne
         if grille[col] == grille[col + 3] and grille[col] == grille[col+6] and grille[col] != 0:
-            return grille[col]
-    
-       
+            return grille[col]  
     return 0
 
 
