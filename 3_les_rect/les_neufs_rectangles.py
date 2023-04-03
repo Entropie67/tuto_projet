@@ -16,7 +16,20 @@
 
 import pygame
 from pygame.locals import *
- 
+
+def gagne(grille):
+    """ Prend une grille et renvoie le numéro du joueur gagnant,
+    0 si personne ne gagne 
+    """
+    # En ligne
+    for i in range(0, 9, 3):
+        print(i)
+        joueur = grille[i]
+        if grille[i] == grille[i + 1] and grille[i] == grille[i+2] and grille[i] != 0:
+            print("gagne")
+            return joueur
+
+
 RED = (255, 0, 0)
 GREEN = (0, 255, 0)
 BLUE = (0, 0, 255)
@@ -53,6 +66,7 @@ while not stop:
                             grille[i] = joueur % 2 + 1
                             rect_surf[i].fill(COLORS[joueur % 2])
                             joueur += 1
+                            gagne(grille)
     screen.fill(0)
     for i in range(9):
         screen.blit(rect_surf[i], clickable_area[i])
