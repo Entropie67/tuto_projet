@@ -15,10 +15,11 @@ stop = False
  
 # Création des neufs rectanles :
 rectangles = []
-for i in range(9):
-    clickable_area = pygame.Rect((i + 300, 300), (300, 300))
-    rectangles.append(pygame.Surface(clickable_area.size))
-    rectangles[i].fill(COLORS[color_index])
+for i in range(3):
+    for j in range(3):
+        clickable_area = pygame.Rect((i * 305, j* 300), (300, 300))
+        rectangles.append((pygame.Surface(clickable_area.size), clickable_area))
+        rectangles[i][0].fill(COLORS[color_index])
  
 while not stop:
     for event in pygame.event.get():
@@ -29,11 +30,11 @@ while not stop:
             if event.button == 1: # 1= clique gauche
                 if clickable_area.collidepoint(event.pos):
                     color_index = (color_index + 1) % 3
-                    rectangles[0].fill(COLORS[color_index])
+                    rectangles[0][0].fill(COLORS[color_index])
      
     screen.fill(0) # On efface tout l'écran
     for i in range(9):
-        screen.blit(rectangles[i], clickable_area)
+        screen.blit(rectangles[i][0], rectangles[i][1])
     pygame.display.flip()
  
 pygame.quit()

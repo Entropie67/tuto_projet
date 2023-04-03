@@ -28,7 +28,7 @@ screen = pygame.display.set_mode((400, 400))
  
 stop = False
  
-clickable_area = pygame.Rect((100, 100), (100, 100))
+clickable_area = pygame.Rect((5, 5), (100, 100))
 rect_surf = pygame.Surface(clickable_area.size)
 rect_surf.fill(COLORS[color_index])
  
